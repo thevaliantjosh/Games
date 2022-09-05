@@ -1,2 +1,3 @@
 "use strict"
-alert("Welcome to my Memory Card Game!");
+//alert("Welcome to my Memory Card Game!");
+
