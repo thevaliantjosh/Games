@@ -20,7 +20,8 @@ function flipCard() {
         hasFlippedCard = true;
         firstCard = this;
         // console.log({hasFlippedCard, firstCard});
-    } else {
+        return;
+    }
         //second click of Card
         hasFlippedCard = false;
         secondCard = this;
@@ -28,20 +29,25 @@ function flipCard() {
         //do Cards Match?
         // console.log(firstCard.dataset.framework)
         // console.log(secondCard.dataset.framework)
-        if (firstCard.dataset.framework === secondCard.dataset.framework) {
-            //it's a match
-            firstCard.removeEventListener("click", flipCard);
-            secondCard.removeEventListener("click", flipCard);
-        } else {
-            //not a match
-            setTimeout(()=>{
-                firstCard.classList.remove("flip");
-                secondCard.classList.remove("flip");
-            }, 1500);
+        checkForMatch()
+}
 
-        }
+function checkForMatch() {
+    let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+    isMatch ? disableCards() : unFlipCards();
+}
 
-    }
+function disableCards() {
+    firstCard.removeEventListener("click", flipCard);
+    secondCard.removeEventListener("click", flipCard);
+}
+
+function unFlipCards() {
+    //not a match
+    setTimeout(()=>{
+        firstCard.classList.remove("flip");
+        secondCard.classList.remove("flip");
+    }, 1500);
 }
 
 //Loop that will loop through the cards list, and attach an event listener, listening for a click even, when fired it executes a function flip card.
