@@ -61,5 +61,12 @@ function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
+
+(function shuffle() {
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    });
+})();
 //Loop that will loop through the cards list, and attach an event listener, listening for a click even, when fired it executes a function flip card.
 cards.forEach(card => card.addEventListener("click", flipCard));
