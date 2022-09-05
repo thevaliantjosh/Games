@@ -49,4 +49,8 @@ body {
     border: 2px solid var(--cody-yellow);
     border-radius: 10px;
     background: var(--codupGreen);
+    backface-visibility: hidden;
+}
+.front-face {
+    transform: rotateY(180deg);
 }
